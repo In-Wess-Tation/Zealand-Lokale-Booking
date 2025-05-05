@@ -4,28 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Case_2___Zealand_Lokale_Booking</title>
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'lightMode';
+            document.documentElement.className = savedTheme;
+        })();
+    </script>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Case_2___Zealand_Lokale_Booking.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Case_2___Zealand_Lokale_Booking</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Case_2 - Zealand Lokale Booking</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="navbar-collapse collapse">
+                    <a class="ps-2" asp-area="" asp-page="/Index">Home Page</a>
+                    <a class="ps-2" asp-area="" asp-page="/Booking/Booking">Book Lokale</a>
+                    <a class="ps-2" asp-area="" asp-page="/Booking/SeeBookings">Se dine Bookings</a>
+
                 </div>
             </div>
         </nav>
@@ -45,6 +49,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        window.onload = function () {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'lightMode';
+            document.body.className = savedTheme;
+        };
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

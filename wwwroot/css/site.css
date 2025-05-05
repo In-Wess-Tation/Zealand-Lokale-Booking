@@ -1,22 +1,241 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
+
+
+
+
+/* Index page */
+
+:root {
+    --header-color: #ffed94;
+    --headline-color: #ebd458; 
+    --titel-text-color: #c9b752; 
+
+    --secondary-headline-color: #34343a;
+    --footer-color: #42424a;
+    --text-color: #4e4e4e; 
+    --footer-text: #6f6f6f; 
+    --detail-color: #c4c4c4;
+
+    --bg-color: #f2f2f2;
+}
+
+/* Light Theme */
+html.zealandMode {
+    --header-color: #ffed94;
+    --headline-color: #ebd458;
+    --titel-text-color: #c9b752;
+
+    --secondary-headline-color: #34343a;
+    --footer-color: #42424a;
+    --text-color: #4e4e4e;
+    --footer-text: #6f6f6f;
+    --detail-color: #c4c4c4;
+
+    --bg-color: #f2f2f2;
+}
+
+
+
+
+header {
+    background-color: var(--header-color);
+}
+
+    header p, header h1, header a {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+        header a:hover {
+            color: var(--detail-color);
+        }
+
+main {
+    height: 100%;
+    min-height: 100vh;
+}
+
+footer {
+    background-color: var(--footer-color);
+    padding: 3rem;
+}
+
+    footer p, footer h1 {
+        color: var(--footer-text);
+    }
+
 body {
-  margin-bottom: 60px;
+    background-color: var(--bg-color);
+}
+
+p {
+    color: var(--text-color);
+}
+
+h1 {
+    color: var(--titel-text-color);
+}
+
+h2 {
+    color: var(--headline-color);
+}
+
+h3 {
+    color: var(--secondary-headline-color);
+}
+
+img {
+    width: 30rem;
+}
+
+
+
+button {
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background-color: var(--footer-text);
+    color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: var(--footer-color);
+    }
+
+button a {
+    color: var(--headline-color);
+    text-decoration: none;
+}
+
+    button a:hover {
+        color: var(--headline-color);
+    }
+
+a {
+    color: var(--detail-color);
+}
+
+
+
+
+/* Booking page */
+
+.wrapper {
+    background-color: var(--detail-color);
+    border-width: 3px;
+    border-color: var(--footer-text);
+    border-radius: 3rem;
+    border-style: dashed;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+.box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 5rem;
+
+}
+
+
+.selectBox {
+    color: var(--footer-text);
+}
+    .selectBox label {
+        font-size: x-large;
+        color: var(--footer-color);
+    }
+
+select {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    width: 10rem;
+    height: 3rem;
+    font-weight: 500;
+    font-size: larger;
+    border-width: 2px;
+    border-radius: 0.3rem;
+}
+
+option {
+    background-color: var(--footer-color);
+    color: var(--bg-color);
+}
+
+.booked {
+    color: red;
+}
+
+.submitBtn {
+    margin-inline: 25rem;
+}
+
+
+
+
+
+
+/* Se Bookings page */
+
+
+.ResWrapper {
+    padding: 0, 3rem, 0, 3rem;
+}
+
+.ResBoxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.ResBox {
+    height: 15rem;
+    width: 22rem;
+    border-width: 4px;
+    border-color: var(--footer-color);
+    border-radius: 1rem;
+    border-style: solid;
+    padding: 1rem;
+}
+
+.ResBoxDetails {
+    background-color: var(--detail-color);
+    opacity: 0.5;
+}
+.ResBoxDetails h2 {
+    color: var(--secondary-headline-color);
 }
