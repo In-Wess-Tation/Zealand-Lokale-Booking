@@ -1,5 +1,5 @@
 ﻿@page
-@model Case_2___Zealand_Lokale_Booking.Pages.Booking.BookingModel
+@model Case_2___Zealand_Lokale_Booking.Pages.BookingPages.BookingModel
 @{
 }
 
@@ -10,9 +10,23 @@
 <div class="wrapper">
     <section class="boxes">
 
-        <article class="box">
+        <form class="box">
 
             <div class="selectBox">
+                <label for="@Model.DagListe">Dag</label>
+                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                <select asp-for="@Model.Book.DagId" asp-items="@Model.DagListe" class="form-control"></select>
+                <span asp-validation-for="@Model.Book.DagId" class="text-danger"></span>
+            </div>
+
+            <div class="selectBox">
+                <label for="@Model.TidListe">Tid</label>
+                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                <select asp-for="@Model.Book.TidId" asp-items="@Model.TidListe" class="form-control"></select>
+                <span asp-validation-for="@Model.Book.DagId" class="text-danger"></span>
+            </div>
+
+@*             <div class="selectBox">
                 <label for="day"> <span>Dag</span> </label>
                 <select id="day" name="day">
                     <option value="mandag">Mandag</option>
@@ -31,15 +45,32 @@
                     <option value="option2">10:00-12:00</option>
                     <option value="option3">12:00-14:00</option>
                 </select>
-            </div>
+            </div> *@
 
-        </article>
+        </form>
 
 
 
-        <article class="box">
+        <form class="box">
+
 
             <div class="selectBox">
+                <label for="@Model.DagListe">Zealand Afdeling</label>
+                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                <select asp-for="@Model.Book.LokationId" asp-items="@Model.LokationsListe" class="form-control"></select>
+                <span asp-validation-for="@Model.Book.LokationId" class="text-danger"></span>
+            </div>
+
+            <div class="selectBox">
+                <label for="@Model.DagListe">Lokale</label>
+                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                <select asp-for="@Model.Book.LokaleId" asp-items="@Model.LokaleListe" class="form-control"></select>
+                <span asp-validation-for="@Model.Book.LokaleId" class="text-danger"></span>
+            </div>
+
+
+
+           @*  <div class="selectBox">
                 <label for="department">Zealand Afdeling</label>
                 <select id="department" name="department">
                     <option value="roskilde">Roskilde</option>
@@ -62,9 +93,9 @@
                     <option value="D2.04">D2.04</option>
                     <option class="booked" value="D2.02">D2.02</option>
                 </select>
-            </div>
+            </div> *@
 
-        </article>
+        </form>
 
 
 

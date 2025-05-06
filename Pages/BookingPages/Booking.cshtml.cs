@@ -1,0 +1,65 @@
+using Case_2___Zealand_Lokale_Booking.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using System.Text;
+using System.Xml.Linq;
+
+
+namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
+{
+    public class BookingModel : PageModel
+    {
+
+        public Booking Book { get; set; } = new Booking();
+
+        public SelectList DagListe { get; private set; }
+        public SelectList LokaleListe { get; private set; }
+        public SelectList LokationsListe { get; private set; }
+        public SelectList TidListe { get; private set; }
+
+        public void OnGet()
+        {
+            using BookngServiceContext context = new BookngServiceContext();
+
+
+            List<Dag> DageFraDB = context.Dags.ToList();
+            List<Lokale> LokalerFraDB = context.Lokales.ToList();
+            List<Lokation> LokationerFraDB = context.Lokations.Include(l => l.AdresseNavigation).ToList();
+            List<Tid> TiderFraDB = context.Tids.ToList();
+
+
+            DagListe = new SelectList(DageFraDB, nameof(Dag.DagId), nameof(Dag.ValgteDag));
+            LokaleListe = new SelectList(LokalerFraDB, nameof(Lokale.LokaleId), nameof(Lokale.LokaleNavn));
+            LokationsListe = new SelectList(LokationerFraDB, nameof(Lokation.LokationId), nameof(Lokation.ByNavn));
+            TidListe = new SelectList(TiderFraDB, nameof(Tid.TidId), nameof(Tid.ValgteTid));
+
+
+        }
+
+
+        /*public IActionResult OnPost()
+        {
+            // Tjek om det indtastede data er validt
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            // Send data videre til repository
+            _repo.Create(Book);
+
+            // Vend tilbage til oversigen
+            return RedirectToPage("BookingSucess");
+        }*/
+
+
+
+
+
+
+
+    }
+}
