@@ -7,10 +7,11 @@
 <h1 class="p-3">Resever din Booking: </h1>
 
 
-<div class="wrapper">
-    <section class="boxes">
+<section class="wrapper">
+    <article class="boxes">
+        <form method="post">
 
-        <form class="box">
+        <article class="box">
 
             <div class="selectBox">
                 <label for="@Model.DagListe">Dag</label>
@@ -47,26 +48,27 @@
                 </select>
             </div> *@
 
-        </form>
+        </article>
 
 
 
-        <form class="box">
+        <article class="box">
 
 
             <div class="selectBox">
-                <label for="@Model.DagListe">Zealand Afdeling</label>
+                <label for="@Model.LokationsListe">Zealand Afdeling</label>
                 @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
                 <select asp-for="@Model.Book.LokationId" asp-items="@Model.LokationsListe" class="form-control"></select>
                 <span asp-validation-for="@Model.Book.LokationId" class="text-danger"></span>
             </div>
 
             <div class="selectBox">
-                <label for="@Model.DagListe">Lokale</label>
+                <label for="@Model.LokaleListe">Lokale</label>
                 @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
                 <select asp-for="@Model.Book.LokaleId" asp-items="@Model.LokaleListe" class="form-control"></select>
                 <span asp-validation-for="@Model.Book.LokaleId" class="text-danger"></span>
             </div>
+
 
 
 
@@ -95,18 +97,19 @@
                 </select>
             </div> *@
 
+
+            
+
+        </article>
+
+            <button class="submitBtn" type="submit" asp-page-handler="Submit">
+                Submit
+            </button>
+
         </form>
-
-
-
        
 
-    </section>
+    </article>
 
 
-    <button class="submitBtn">
-        <a asp-area="" asp-page="/Resevations">Submit</a>
-    </button>
-
-
-</div>
+</section>

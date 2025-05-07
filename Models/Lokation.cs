@@ -31,6 +31,6 @@ public partial class Lokation
     public virtual ICollection<Lokale> Lokales { get; set; } = new List<Lokale>();
 
 
-    public string ByNavn { get { return AdresseNavigation.ByNavn; } }
+    public string ByNavn { get { return AdresseNavigation?.ByNavn; } }
 
 }

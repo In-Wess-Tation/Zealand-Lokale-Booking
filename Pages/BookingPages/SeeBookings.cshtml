@@ -11,16 +11,22 @@
     <h1>Page Header</h1>
 
     <article class="ResBoxes">
+        @foreach (var elm in Model.Book){
 
-        <article class="ResBox ResBoxDetails">
-            <h2 class="">Overskrift</h2>
-            <p>
-                En mase hvis af tekst. vfeoifoeerip, vjirenvorenvowr3no, nvgrenvgwonforew. nvoernvreonveonveofksd cjeorwfj.
-            </p>
-            <p>nbvnofenvwpdk nvpew, 854789625896358. 654896548965, bfuewowqpenfcjew vwjovew. </p>
-        </article>
+            <form class="ResBox ResBoxDetails" method="post">
+                <h2 class="">@elm.Lokale.LokaleNavn</h2>
+                <p>@elm.Lokale.LokaleType</p>
+                <h3>@elm.Lokation.ByNavn</h3>
+                <div>
+                    <p>@elm.Tid.ValgteTid</p>
+                    <p>@elm.Dag.ValgteDag</p>
+                </div>
+                <button class="DeleteBtn" type="submit" asp-page-handler="Submit" asp-route-id="@elm.BookingId">
+                    Delete
+                </button>
+            </form>
 
-
+        }
 
     </article>
 

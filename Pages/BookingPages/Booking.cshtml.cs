@@ -12,7 +12,7 @@ namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
 {
     public class BookingModel : PageModel
     {
-
+        [BindProperty]
         public Booking Book { get; set; } = new Booking();
 
         public SelectList DagListe { get; private set; }
@@ -40,8 +40,10 @@ namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
         }
 
 
-        /*public IActionResult OnPost()
+        public IActionResult OnPostSubmit()
         {
+            using BookngServiceContext context = new BookngServiceContext();
+
             // Tjek om det indtastede data er validt
             if (!ModelState.IsValid)
             {
@@ -49,11 +51,12 @@ namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
             }
 
             // Send data videre til repository
-            _repo.Create(Book);
+            context.Bookings.Add(Book);
+            context.SaveChanges();
 
             // Vend tilbage til oversigen
             return RedirectToPage("BookingSucess");
-        }*/
+        }
 
 
 
