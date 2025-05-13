@@ -245,3 +245,10 @@ option {
     background-color: red; 
     color: white; 
 }
+
+
+/*Login Page*/
+
+.LoginWrapper {
+    display: flex;
+    justify-content: center;
