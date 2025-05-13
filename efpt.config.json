@@ -19,6 +19,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Brugere]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Dag]",
          "ObjectType": 0
       },

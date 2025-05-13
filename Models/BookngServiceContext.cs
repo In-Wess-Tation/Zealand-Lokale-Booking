@@ -19,6 +19,8 @@ public partial class BookngServiceContext : DbContext
 
     public virtual DbSet<Booking> Bookings { get; set; }
 
+    public virtual DbSet<Brugere> Brugeres { get; set; }
+
     public virtual DbSet<Dag> Dags { get; set; }
 
     public virtual DbSet<Lokale> Lokales { get; set; }
@@ -30,13 +32,16 @@ public partial class BookngServiceContext : DbContext
     public virtual DbSet<Tid> Tids { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RTVVT6T;Initial Catalog=BookngService; Trust Server Certificate=True; User ID=sa;Password=Kusse505 ");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RTVVT6T;Initial Catalog=BookngService; Trust Server Certificate=True; User ID=sa;Password=Kusse505");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Booking>(entity =>
         {
             entity.HasKey(e => e.BookingId).HasName("PK__Booking__73951ACD4D3DC5F1");
+
+            entity.HasOne(d => d.Bruger).WithMany(p => p.Bookings).HasConstraintName("FK_Booking_BrugerID");
 
             entity.HasOne(d => d.Dag).WithMany(p => p.Bookings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -53,6 +58,11 @@ public partial class BookngServiceContext : DbContext
             entity.HasOne(d => d.Tid).WithMany(p => p.Bookings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Booking_Tid");
+        });
+
+        modelBuilder.Entity<Brugere>(entity =>
+        {
+            entity.HasKey(e => e.BrugerId).HasName("PK__Brugere__6FA2FB3034D2483E");
         });
 
         modelBuilder.Entity<Dag>(entity =>

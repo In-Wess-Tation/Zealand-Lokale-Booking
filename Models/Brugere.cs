@@ -8,33 +8,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Case_2___Zealand_Lokale_Booking.Models;
 
-[Table("Lokale")]
-public partial class Lokale
+[Table("Brugere")]
+public partial class Brugere
 {
     [Key]
-    [Column("LokaleID")]
-    public int LokaleId { get; set; }
-
-    [Column("LokationsID")]
-    public int LokationsId { get; set; }
-
-    [Required]
-    [StringLength(150)]
-    [Unicode(false)]
-    public string LokaleType { get; set; }
+    [Column("BrugerID")]
+    public int BrugerId { get; set; }
 
     [Required]
     [StringLength(50)]
     [Unicode(false)]
-    public string LokaleNavn { get; set; }
+    public string BrugerNavn { get; set; }
 
-    [InverseProperty("Lokale")]
+    [Required]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string Kodeord { get; set; }
+
+    [InverseProperty("Bruger")]
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-
-    [ForeignKey("LokationsId")]
-    [InverseProperty("Lokales")]
-    public virtual Lokation Lokations { get; set; }
-
-
-
 }

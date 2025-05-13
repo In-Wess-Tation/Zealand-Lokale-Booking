@@ -27,6 +27,13 @@ public partial class Booking
     [Column("TidID")]
     public int TidId { get; set; }
 
+    [Column("BrugerID")]
+    public int? BrugerId { get; set; }
+
+    [ForeignKey("BrugerId")]
+    [InverseProperty("Bookings")]
+    public virtual Brugere Bruger { get; set; }
+
     [ForeignKey("DagId")]
     [InverseProperty("Bookings")]
     public virtual Dag Dag { get; set; }
