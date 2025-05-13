@@ -1,13 +1,29 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace Case_2___Zealand_Lokale_Booking
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
+
+            builder.Services.AddRazorPages(options =>
+            {
+                // Angiv hvilke foldere login giver adgang til
+                options.Conventions.AuthorizeFolder("/BookingPages");
+            });
+
+            builder.Services.AddAuthentication(
+            CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Index";
+                options.AccessDeniedPath = "/AuthoriaztionDenied";
+            });
+
             // Add services to the container.
-            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
@@ -23,7 +39,7 @@ namespace Case_2___Zealand_Lokale_Booking
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication(); // Aktivér cookie-baseret Authentication
             app.UseAuthorization();
 
             app.MapRazorPages();

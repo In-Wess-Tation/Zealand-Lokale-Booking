@@ -14,18 +14,27 @@
     <form method="post" class="LoginBox" style="background-color:white; padding:30px; border:1px solid #ccc; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); width:300px;">
 
         <div style="margin-bottom: 15px;">
-            <label for="username" style="display:block; margin-bottom:5px;"><b>Brugernavn:</b></label>
-            <input type="text" id="username" name="username" required style="width:100%; padding:8px; box-sizing:border-box;">
+            <label for="BrugerNavn" style="display:block; margin-bottom:5px;"><b>Brugernavn:</b></label>
+            <input asp-for="BrugerNavn" required style="width:100%; padding:8px; box-sizing:border-box;">
         </div>
 
         <div style="margin-bottom: 15px;">
-            <label for="password" style="display:block; margin-bottom:5px;"><b>Adgangskode:</b></label>
-            <input type="password" id="password" name="password" required style="width:100%; padding:8px; box-sizing:border-box;">
+            <label asp-for="Kodeord" style="display:block; margin-bottom:5px;"><b>Adgangskode:</b></label>
+            <input asp-for="Kodeord" type="password" required style="width:100%; padding:8px; box-sizing:border-box;">
+        </div>
+        <div>
+            @Model.ErrorMessage
         </div>
 
-        <div>
+       @*  <div>
             <button type="submit" style="width:100%; padding:10px; background-color:#ffed94; color:black; border:none; border-radius:4px; cursor:pointer;">Login</button>
-        </div>
+        </div> *@
+
+
+        <button style="width:100%; padding:10px; background-color:#ffed94; color:black; border:none; border-radius:4px; cursor:pointer;" type="submit" asp-page-handler="Submit">
+            Submit
+        </button>
+
     </form>
 
 </section>
