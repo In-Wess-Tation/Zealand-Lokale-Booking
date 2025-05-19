@@ -27,7 +27,4 @@ public partial class Brugere
 
     [InverseProperty("Bruger")]
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-
-
-
 }

@@ -33,15 +33,17 @@ public partial class BookngServiceContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RTVVT6T;Initial Catalog=BookngService; Trust Server Certificate=True; User ID=sa;Password=Kusse505");
+        => optionsBuilder.UseSqlServer("Data Source=mssql16.unoeuro.com;Initial Catalog=mangoscave_dk_db_zealand;User ID=mangoscave_dk;Password=kt6mryFGgep9DhHRAwn5");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Booking>(entity =>
         {
-            entity.HasKey(e => e.BookingId).HasName("PK__Booking__73951ACD4D3DC5F1");
+            entity.HasKey(e => e.BookingId).HasName("PK__Booking__73951ACD17A74BF0");
 
-            entity.HasOne(d => d.Bruger).WithMany(p => p.Bookings).HasConstraintName("FK_Booking_BrugerID");
+            entity.HasOne(d => d.Bruger).WithMany(p => p.Bookings)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Booking_BrugerID");
 
             entity.HasOne(d => d.Dag).WithMany(p => p.Bookings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -62,17 +64,17 @@ public partial class BookngServiceContext : DbContext
 
         modelBuilder.Entity<Brugere>(entity =>
         {
-            entity.HasKey(e => e.BrugerId).HasName("PK__Brugere__6FA2FB3034D2483E");
+            entity.HasKey(e => e.BrugerId).HasName("PK__Brugere__6FA2FB306457C7F4");
         });
 
         modelBuilder.Entity<Dag>(entity =>
         {
-            entity.HasKey(e => e.DagId).HasName("PK__Dag__A4B47848465F314F");
+            entity.HasKey(e => e.DagId).HasName("PK__Dag__A4B4784880D2626B");
         });
 
         modelBuilder.Entity<Lokale>(entity =>
         {
-            entity.HasKey(e => e.LokaleId).HasName("PK__Lokale__1C77899257B78F90");
+            entity.HasKey(e => e.LokaleId).HasName("PK__Lokale__1C77899241463BB5");
 
             entity.HasOne(d => d.Lokations).WithMany(p => p.Lokales)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -81,7 +83,7 @@ public partial class BookngServiceContext : DbContext
 
         modelBuilder.Entity<Lokation>(entity =>
         {
-            entity.HasKey(e => e.LokationId).HasName("PK__Lokation__C799CC0A3A00E8E7");
+            entity.HasKey(e => e.LokationId).HasName("PK__Lokation__C799CC0A2DB93852");
 
             entity.HasOne(d => d.AdresseNavigation).WithMany(p => p.Lokations)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -90,12 +92,12 @@ public partial class BookngServiceContext : DbContext
 
         modelBuilder.Entity<LokationsAdresse>(entity =>
         {
-            entity.HasKey(e => e.Adresse).HasName("PK__Lokation__DA749F1A8464F474");
+            entity.HasKey(e => e.Adresse).HasName("PK__Lokation__DA749F1A9469297B");
         });
 
         modelBuilder.Entity<Tid>(entity =>
         {
-            entity.HasKey(e => e.TidId).HasName("PK__Tid__3898884937410605");
+            entity.HasKey(e => e.TidId).HasName("PK__Tid__38988849B6EA0546");
         });
 
         OnModelCreatingPartial(modelBuilder);

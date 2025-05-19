@@ -30,5 +30,6 @@ public partial class Lokation
     [InverseProperty("Lokations")]
     public virtual ICollection<Lokale> Lokales { get; set; } = new List<Lokale>();
 
+
     public string ByNavn { get { return AdresseNavigation?.ByNavn; } }
 }

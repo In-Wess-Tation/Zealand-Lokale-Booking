@@ -28,7 +28,7 @@ public partial class Booking
     public int TidId { get; set; }
 
     [Column("BrugerID")]
-    public int? BrugerId { get; set; }
+    public int BrugerId { get; set; }
 
     [ForeignKey("BrugerId")]
     [InverseProperty("Bookings")]
@@ -49,8 +49,4 @@ public partial class Booking
     [ForeignKey("TidId")]
     [InverseProperty("Bookings")]
     public virtual Tid Tid { get; set; }
-
-
-
-
 }

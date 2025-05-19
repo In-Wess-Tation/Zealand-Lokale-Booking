@@ -19,14 +19,14 @@ public partial class Lokale
     public int LokationsId { get; set; }
 
     [Required]
-    [StringLength(150)]
-    [Unicode(false)]
-    public string LokaleType { get; set; }
-
-    [Required]
     [StringLength(50)]
     [Unicode(false)]
     public string LokaleNavn { get; set; }
+
+    [Required]
+    [StringLength(150)]
+    [Unicode(false)]
+    public string LokaleType { get; set; }
 
     [InverseProperty("Lokale")]
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
@@ -36,8 +36,7 @@ public partial class Lokale
     public virtual Lokation Lokations { get; set; }
 
 
+
     [NotMapped]
     public string LokaleNavnOgType { get { return $"{LokaleNavn} ({LokaleType})"; } }
-
-
 }
