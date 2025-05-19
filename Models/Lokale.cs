@@ -36,5 +36,8 @@ public partial class Lokale
     public virtual Lokation Lokations { get; set; }
 
 
+    [NotMapped]
+    public string LokaleNavnOgType { get { return $"{LokaleNavn} ({LokaleType})"; } }
+
 
 }

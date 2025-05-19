@@ -49,4 +49,8 @@ public partial class Booking
     [ForeignKey("TidId")]
     [InverseProperty("Bookings")]
     public virtual Tid Tid { get; set; }
+
+
+
+
 }

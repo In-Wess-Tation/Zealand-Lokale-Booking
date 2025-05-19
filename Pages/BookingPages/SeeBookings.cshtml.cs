@@ -21,7 +21,7 @@ namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
             using BookngServiceContext context = new BookngServiceContext();
 
 
-            Book = context.Bookings.Include(elm => elm.Tid).Include(elm => elm.Dag).Include(elm => elm.Lokale).Include(elm => elm.Lokation).ThenInclude(elm => elm.AdresseNavigation).ToList();
+            Book = context.Bookings.Where(elm => elm.BrugerId == IndexModel.CurrentUser.BrugerId).Include(elm => elm.Tid).Include(elm => elm.Dag).Include(elm => elm.Lokale).Include(elm => elm.Lokation).ThenInclude(elm => elm.AdresseNavigation).ToList();
 
 
 
