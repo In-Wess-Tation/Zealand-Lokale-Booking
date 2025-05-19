@@ -12,39 +12,50 @@
     <article class="boxes">
         <form method="post">
 
-        <article class="box">
+            <article class="box">
 
-            <div class="selectBox">
-                <label for="@Model.DagListe">Dag</label>
-                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
-                <select asp-for="@Model.Book.DagId" asp-items="@Model.DagListe" class="form-control"></select>
-                <span asp-validation-for="@Model.Book.DagId" class="text-danger"></span>
-            </div>
+                <div class="selectBox">
+                    <label for="@Model.DagListe">Dag</label>
+                    @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                    <select asp-for="@Model.Book.DagId" asp-items="@Model.DagListe" class="form-control"></select>
+                    <span asp-validation-for="@Model.Book.DagId" class="text-danger"></span>
+                </div>
 
-            <div class="selectBox">
-                <label for="@Model.TidListe">Tid</label>
-                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
-                <select asp-for="@Model.Book.TidId" asp-items="@Model.TidListe" class="form-control"></select>
-                <span asp-validation-for="@Model.Book.DagId" class="text-danger"></span>
-            </div>
+                <div class="selectBox">
+                    <label for="@Model.TidListe">Tid</label>
+                    @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                    <select asp-for="@Model.Book.TidId" asp-items="@Model.TidListe" class="form-control"></select>
+                    <span asp-validation-for="@Model.Book.DagId" class="text-danger"></span>
+                </div>
 
-        </article>
+            </article>
 
 
 
-        <article class="box">
+            <article class="box">
 
-            <div class="selectBox">
-                <label for="@Model.LokationsListe">Zealand Afdeling</label>
-                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
-                <select asp-for="@Model.Book.LokationId" asp-items="@Model.LokationsListe" class="form-control"></select>
-                <span asp-validation-for="@Model.Book.LokationId" class="text-danger"></span>
-            </div>
+                <div class="selectBox">
+                    <label for="@Model.LokationsListe">Zealand Afdeling</label>
+                    @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                    <select asp-for="@Model.Book.LokationId" asp-items="@Model.LokationsListe" class="form-control"></select>
+                    <span asp-validation-for="@Model.Book.LokationId" class="text-danger"></span>
+                </div>
 
-            <div class="selectBox">
-                <label for="@Model.LokaleListe">Lokale</label>
-                @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
-                <select asp-for="@Model.Book.LokaleId" asp-items="@Model.LokaleListe" class="form-control"></select>
+                <div class="selectBox">
+                    <label for="@Model.LokaleListe">Lokale</label>
+                    @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
+                    <select for="@Model.Book.LokaleId" class="form-control">
+                        @foreach (var Lokale in Model.Lokaler){
+                            if (Model.IsBooked(Lokale.LokaleId)) {
+                                <option class="form-control booked">@Lokale.LokaleNavnOgType</option>                                        
+                            }
+                            else {
+                                <option class="form-control">@Lokale.LokaleNavnOgType</option>
+
+                            }
+                            
+                        }
+                    </select>
                 <span asp-validation-for="@Model.Book.LokaleId" class="text-danger"></span>
             </div>
 

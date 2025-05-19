@@ -22,6 +22,19 @@ namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
         public SelectList TidListe { get; private set; }
         public string ErrorMessage { get; set; }
 
+        public List<Lokale> Lokaler { get; private set; }
+
+      
+
+        public bool IsBooked(int lokaleId)
+        {
+            using BookngServiceContext context = new BookngServiceContext();
+
+            return context.Bookings.Where(elm => elm.LokaleId == lokaleId).Count()>0;
+
+        }
+
+
 
         public void OnGet()
         {
@@ -33,11 +46,14 @@ namespace Case_2___Zealand_Lokale_Booking.Pages.BookingPages
             List<Lokation> LokationerFraDB = context.Lokations.Include(l => l.AdresseNavigation).ToList();
             List<Tid> TiderFraDB = context.Tids.ToList();
 
+            Lokaler = LokalerFraDB;
+
 
             DagListe = new SelectList(DageFraDB, nameof(Dag.DagId), nameof(Dag.ValgteDag));
             LokaleListe = new SelectList(LokalerFraDB, nameof(Lokale.LokaleId), nameof(Lokale.LokaleNavnOgType));
             LokationsListe = new SelectList(LokationerFraDB, nameof(Lokation.LokationId), nameof(Lokation.ByNavn));
             TidListe = new SelectList(TiderFraDB, nameof(Tid.TidId), nameof(Tid.ValgteTid));
+
 
 
         }
