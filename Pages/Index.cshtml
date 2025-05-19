@@ -22,9 +22,9 @@
             <label asp-for="Kodeord" style="display:block; margin-bottom:5px;"><b>Adgangskode:</b></label>
             <input asp-for="Kodeord" type="password" required style="width:100%; padding:8px; box-sizing:border-box;">
         </div>
-        <div>
+        <p class="booked"> 
             @Model.ErrorMessage
-        </div>
+        </p>
 
        @*  <div>
             <button type="submit" style="width:100%; padding:10px; background-color:#ffed94; color:black; border:none; border-radius:4px; cursor:pointer;">Login</button>
