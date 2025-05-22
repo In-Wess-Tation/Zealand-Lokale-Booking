@@ -44,13 +44,13 @@
                 <div class="selectBox">
                     <label for="@Model.LokaleListe">Lokale</label>
                     @*asp-for = hvor skal dataen sendes hen? asp-item = Hvad blvier der vist på pagen?*@
-                    <select for="@Model.Book.LokaleId" class="form-control">
+                    <select asp-for="@Model.Book.LokaleId" class="form-control">
                         @foreach (var Lokale in Model.Lokaler){
                             if (Model.IsBooked(Lokale.LokaleId)) {
-                                <option class="form-control booked">@Lokale.LokaleNavnOgType</option>                                        
+                                <option class="form-control booked" value="@Lokale.LokaleId">@Lokale.LokaleNavnOgType </option>
                             }
                             else {
-                                <option class="form-control">@Lokale.LokaleNavnOgType</option>
+                                <option class="form-control" value="@Lokale.LokaleId">@Lokale.LokaleNavnOgType</option>
 
                             }
                             

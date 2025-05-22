@@ -39,4 +39,6 @@ public partial class Lokale
 
     [NotMapped]
     public string LokaleNavnOgType { get { return $"{LokaleNavn} ({LokaleType})"; } }
+
+
 }
